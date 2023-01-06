@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Cell from './cell';
 
 export default class Board extends React.Component {
     state = {
         boardData: this.initBoardData(this.props.height, this.props.width, this.props.mines),
         gameStatus: "Game in progress",
+        playerStatus: 'life',
         mineCount: this.props.mines,
         isClicked: false
     };
@@ -272,10 +273,6 @@ export default class Board extends React.Component {
         });
     }
 
-    handleRestart() {
-        window.location.reload()
-    }
-
     renderBoard(data) {
         return data.map((datarow) => {
             return datarow.map((dataitem, index) => {
@@ -292,23 +289,34 @@ export default class Board extends React.Component {
 
     }
 
+    handleRestart() {
+        window.location.reload()
+    }
+    
     render() {
         return (
             <div className="play">
-                <div className="modal-back">
-                    <div className='modal'>
-                        <span>Minas: {this.state.mineCount}</span>
-                        <h1>{this.state.gameStatus}</h1>
-                        <button onClick={() => this.handleRestart()} className='restart'>Restart</button>
+
+                {this.state.gameStatus === 'You Lost' && (
+                    <div className="modal-back">
+                        <div className='modal'>
+                            <span>Minas: {this.state.mineCount}</span>
+                            <h1>{this.state.gameStatus}</h1>
+                            <button onClick={() => this.handleRestart()} className='restart'>Restart</button>
+                        </div>
                     </div>
-                </div>
-                <div className={`game ${this.state.gameStatus.toLowerCase().replace(/\s+/g, "-")}`}>
-                    <div className="board">
-                        {
-                            this.renderBoard(this.state.boardData)
-                        }
+                )}
+
+
+                {this.state.gameStatus === 'Game in progress' && (
+                    <div className={`game ${this.state.gameStatus.toLowerCase().replace(/\s+/g, "-")}`}>
+                        <div className="board">
+                            {
+                                this.renderBoard(this.state.boardData)
+                            }
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         );
     }
