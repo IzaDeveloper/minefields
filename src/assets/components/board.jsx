@@ -11,6 +11,7 @@ export default class Board extends React.Component {
     gameStatus: "Game in progress",
     mineCount: this.props.mines,
     isClicked: false,
+    modal: true,
   };
 
   /* Helper Functions */
@@ -232,8 +233,10 @@ export default class Board extends React.Component {
 
     // check if mine. game over if true
     if (this.state.boardData[x][y].isMine) {
-      this.setState({ gameStatus: "You Lost" });
       this.revealBoard();
+      setTimeout(() => {
+        this.setState({ gameStatus: "You Lost" });
+      }, [1000])
     }
 
     let updatedData = this.state.boardData;
@@ -245,8 +248,10 @@ export default class Board extends React.Component {
     }
 
     if (this.getHidden(updatedData).length === this.props.mines) {
-      this.setState({ mineCount: 0, gameStatus: "You Win" });
       this.revealBoard();
+      setTimeout(() => {
+        this.setState({ mineCount: 0, gameStatus: "You Win" });
+      }, [1000])
     }
 
     this.setState({
@@ -302,6 +307,10 @@ export default class Board extends React.Component {
     });
   }
 
+  handleStart() {
+    this.setState({ modal: false });
+  }
+
   handleRestart() {
     window.location.reload();
   }
@@ -309,23 +318,48 @@ export default class Board extends React.Component {
   render() {
     return (
       <div className="play">
+        {this.state.modal === true ? (
+          <div className="modal">
+            <div className="modal-content modal-start">PRESS START</div>
+            <button onClick={() => this.handleStart()} className="btn start">
+              Start
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
+
+        <div
+          className={`game ${this.state.gameStatus
+            .toLowerCase()
+            .replace(/\s+/g, "-")}`}
+        >
+          <div className="board">{this.renderBoard(this.state.boardData)}</div>
+        </div>
+
+        {/* RESULTADO */}
+
         {this.state.gameStatus === "You Lost" ? (
           <div className="modal">
-            <div className="modal-content"></div>
-            <button onClick={() => this.handleRestart()} className="restart">
+            <div className="modal-content modal-lost">GAME OVER</div>
+            <button onClick={() => this.handleRestart()} className="btn restart">
               Restart
             </button>
           </div>
         ) : (
-          <div>
-            <h1>Minas: {this.state.mineCount}</h1>
-            <h1>{this.state.gameStatus}</h1>
-          </div>
+          <></>
         )}
 
-        <div className={`game ${this.state.gameStatus.toLowerCase().replace(/\s+/g, "-")}`}>
-          <div className="board">{this.renderBoard(this.state.boardData)}</div>
-        </div>
+        {this.state.gameStatus === "You Win" ? (
+          <div className="modal">
+            <div className="modal-content modal-win">YOU WIN</div>
+            <button onClick={() => this.handleRestart()} className="btn menu">
+              MENU
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     );
   }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 *,
 *:before,
 *:after,
@@ -9,12 +11,11 @@ div {
 }
 
 .play {
-    background: hsla(208, 33%, 21%, 1);
-    background: linear-gradient(90deg, hsla(208, 33%, 21%, 1) 0%, hsla(211, 36%, 46%, 1) 100%);
-    background: -moz-linear-gradient(90deg, hsla(208, 33%, 21%, 1) 0%, hsla(211, 36%, 46%, 1) 100%);
-    background: -webkit-linear-gradient(90deg, hsla(208, 33%, 21%, 1) 0%, hsla(211, 36%, 46%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#243748", endColorstr="#4B749F", GradientType=1);
-
+    background: hsla(218, 100%, 16%, 1);
+    background: linear-gradient(45deg, hsla(218, 100%, 16%, 1) 0%, hsla(195, 67%, 67%, 1) 100%);
+    background: -moz-linear-gradient(45deg, hsla(218, 100%, 16%, 1) 0%, hsla(195, 67%, 67%, 1) 100%);
+    background: -webkit-linear-gradient(45deg, hsla(218, 100%, 16%, 1) 0%, hsla(195, 67%, 67%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#001f54", endColorstr="#71c7e3", GradientType=1);
 }
 
 .game {
@@ -32,17 +33,16 @@ div {
 }
 
 .cell {
-    border-radius: 5px;
-    border: 1px solid #fff;
-    color: #113f5b;
-    background: #727a9a;
-    font-size: 2rem;
-    font-weight: bolder;
-    text-align: center;
-    line-height: 100px;
-    height: 100px;
     width: 100px;
+    height: 100px;
+    font-size: 2rem;
+    line-height: 100px;
+    border-radius: 5px;
+    text-align: center;
     position: relative;
+    font-weight: bolder;
+    background: #022869;
+    border: 1px solid #fff;
 }
 
 .cell-one {
@@ -61,19 +61,36 @@ div {
     color: tomato;
 }
 
+.cell-five {
+    color: orangered;
+}
+
 .hidden {
-    background: #08203e;
+    background: #001233;
     /* background-image: url('https://play-lh.googleusercontent.com/wAWerkEu_g2_BMCl85WKqN2mxn0xW1O22nV6yJOayrMKu9pqtrLMn7S2Zd1xaykKm0g');
     background-size: contain; */
+}
+
+.is-empty:not(.hidden) {
+    background-color: #022561;
+}
+
+.bomb {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.flag {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    background-color: #adecea;
 }
 
 .is-flag,
 .is-mine {
     color: #c5302e;
-}
-
-.is-empty:not(.hidden) {
-    background-color: #6c729196;
 }
 
 .you-lost .is-mine.is-clicked::after {
@@ -96,19 +113,6 @@ div {
     background-color: rgba(0, 255, 0, 0.5);
 }
 
-.bomb {
-    border-radius: 5px;
-    width: 100%;
-    height: 100%;
-}
-
-.flag {
-    border-radius: 5px;
-    width: 100%;
-    height: 100%;
-    background-color: #adecea;
-}
-
 .modal {
     top: 0;
     z-index: 1;
@@ -123,22 +127,64 @@ div {
 }
 
 .modal-content {
-    width: 500px;
-    height: 300px;
-    font-size: 2rem;
-    border-radius: 20px;
+    font-size: 2.5rem;
+    border-radius: 50px;
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
-    background-size: contain;
-    background-repeat: repeat;
-    background-image: url('https://i.ytimg.com/vi/-ZGlaAxB7nI/maxresdefault.jpg');
+    font-family: 'Press Start 2P', cursive;
+}
+
+.modal-content.modal-start {
+    width: 500px;
+    height: 200px;
+    background-color: #fa6401;
+    /* background-image: url('https://media.istockphoto.com/id/979183454/es/v%C3%ADdeo/prensa-inicio-error-texto-animaci%C3%B3n.jpg?s=640x640&k=20&c=PhSZgig0d1A5FrUsuQ8IZpcAmpNt_s5PJ9uZHF0RULI=') */
+
+}
+
+.modal-win {
+    width: 500px;
+    height: 200px;
+    background-color: #fca849;
+    /* background-image: url('https://media.istockphoto.com/id/1434200223/pt/vetorial/you-win-pixel-message-design-glitch-effect-stock-vector-illustration.jpg?s=612x612&w=0&k=20&c=bB9_2ayoJKLq_GWyZqCTs6EL3HhGr7RMETmv8I71GWM='); */
+}
+
+.modal-content.modal-lost {
+    width: 500px;
+    height: 200px;
+    background-color: #c5302e;
+    /* background-image: url('https://media.istockphoto.com/id/1307986275/vector/pixel-game-over-8-bit-pixel-game-over-vector-background.jpg?s=612x612&w=0&k=20&c=j-uRfBuSrlAA712SuHiBpvOBcmjsY3r9v_hJWB1ECCI='); */
+}
+
+.btn {
+    padding: 20px;
+    font-size: 2rem;
+    margin-top: 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-family: 'Press Start 2P';
+}
+
+.menu {
+    background-color: #fca849;
+    box-shadow: inset 0px -5px 2px 5px #fc8b49
+}
+
+.start {
+    background-color: #fa6401;
+    box-shadow: inset 0px -5px 2px 5px #fa5001
 }
 
 .restart {
-    border: none;
-    padding: 10px;
-    margin-top: 15px;
-    font-size: 2rem;
-    border-radius: 5px;
+    background-color: #c5302e;
+    box-shadow: inset 0px -5px 2px 5px #8C2022
+}
+
+.is-mine {
+ background-color: #adecea  
 }
