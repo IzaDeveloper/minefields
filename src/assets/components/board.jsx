@@ -320,7 +320,7 @@ export default class Board extends React.Component {
       <div className="play">
         {this.state.modal === true ? (
           <div className="modal">
-            <div className="modal-content modal-start">PRESS START</div>
+            <div className="modal-content modal-start">Minefields</div>
             <button onClick={() => this.handleStart()} className="btn start">
               Start
             </button>

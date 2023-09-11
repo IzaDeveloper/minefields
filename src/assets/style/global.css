@@ -11,11 +11,8 @@ div {
 }
 
 .play {
-    background: hsla(218, 100%, 16%, 1);
-    background: linear-gradient(45deg, hsla(218, 100%, 16%, 1) 0%, hsla(195, 67%, 67%, 1) 100%);
-    background: -moz-linear-gradient(45deg, hsla(218, 100%, 16%, 1) 0%, hsla(195, 67%, 67%, 1) 100%);
-    background: -webkit-linear-gradient(45deg, hsla(218, 100%, 16%, 1) 0%, hsla(195, 67%, 67%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#001f54", endColorstr="#71c7e3", GradientType=1);
+    background: rgb(97,63,251);
+    background: linear-gradient(90deg, rgba(97,63,251,1) 0%, rgba(70,233,252,1) 100%);
 }
 
 .game {
@@ -67,8 +64,6 @@ div {
 
 .hidden {
     background: #001233;
-    /* background-image: url('https://play-lh.googleusercontent.com/wAWerkEu_g2_BMCl85WKqN2mxn0xW1O22nV6yJOayrMKu9pqtrLMn7S2Zd1xaykKm0g');
-    background-size: contain; */
 }
 
 .is-empty:not(.hidden) {
@@ -138,23 +133,28 @@ div {
 .modal-content.modal-start {
     width: 500px;
     height: 200px;
+    color: #fff;
     background-color: #fa6401;
-    /* background-image: url('https://media.istockphoto.com/id/979183454/es/v%C3%ADdeo/prensa-inicio-error-texto-animaci%C3%B3n.jpg?s=640x640&k=20&c=PhSZgig0d1A5FrUsuQ8IZpcAmpNt_s5PJ9uZHF0RULI=') */
-
+    text-transform: uppercase;
+    box-shadow: inset 2px -5px 4px 5px #fa5001;
 }
 
 .modal-win {
     width: 500px;
     height: 200px;
+    color: #fff;
     background-color: #fca849;
-    /* background-image: url('https://media.istockphoto.com/id/1434200223/pt/vetorial/you-win-pixel-message-design-glitch-effect-stock-vector-illustration.jpg?s=612x612&w=0&k=20&c=bB9_2ayoJKLq_GWyZqCTs6EL3HhGr7RMETmv8I71GWM='); */
+    text-transform: uppercase;
+    box-shadow: inset 2px -5px 4px 5px #fca849;
 }
 
 .modal-content.modal-lost {
     width: 500px;
     height: 200px;
+    color: #fff;
     background-color: #c5302e;
-    /* background-image: url('https://media.istockphoto.com/id/1307986275/vector/pixel-game-over-8-bit-pixel-game-over-vector-background.jpg?s=612x612&w=0&k=20&c=j-uRfBuSrlAA712SuHiBpvOBcmjsY3r9v_hJWB1ECCI='); */
+    text-transform: uppercase;
+    box-shadow: inset 0px -5px 2px 5px #8C2022;
 }
 
 .btn {
@@ -172,15 +172,15 @@ div {
 
 .menu {
     background-color: #fca849;
-    box-shadow: inset 0px -5px 2px 5px #fc8b49
+    box-shadow: inset 0px -5px 2px 5px #fc8b49;
 }
 
 .start {
     background-color: #fa6401;
-    box-shadow: inset 0px -5px 2px 5px #fa5001
+    box-shadow: inset 0px -5px 2px 5px #fa5001;
 }
 
 .restart {
     background-color: #c5302e;
-    box-shadow: inset 0px -5px 2px 5px #8C2022
+    box-shadow: inset 0px -5px 2px 5px #8C2022;
 }
