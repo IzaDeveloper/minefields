@@ -3,9 +3,9 @@ import Board from './assets/components/board';
 
 export default class Game extends React.Component {
   state = {
-    height: 8,
-    width: 8,
-    mines: 10
+    height: 5,
+    width: 5,
+    mines: 5
   };
 
   render() {
