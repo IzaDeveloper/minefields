@@ -123,7 +123,7 @@ div {
 
 .modal-content {
     font-size: 2.5rem;
-    border-radius: 50px;
+    border-radius: 55px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,4 +183,36 @@ div {
 .restart {
     background-color: #c5302e;
     box-shadow: inset 0px -5px 2px 5px #8C2022;
+}
+
+@media (max-width: 600px) {
+    .board {
+        grid-template-columns: repeat(5, 55px);
+        grid-template-rows: repeat(5, 55px);
+        gap: 0.25rem;
+    }
+
+    .cell {
+        width: 55px;
+        height: 55px;
+        font-size: 1rem;
+        line-height: 55px;
+    }
+
+    .modal-content,
+    .modal-win,
+    .modal-content.modal-lost,
+    .modal-content.modal-start {
+        width: 90%;
+        height: auto;
+        font-size: 1.2rem;
+        padding: 35px;
+        text-align: center;
+    }
+
+    .btn {
+        padding: 20px;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
 }

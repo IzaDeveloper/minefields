@@ -14,8 +14,6 @@ export default class Board extends React.Component {
     modal: true,
   };
 
-  /* Helper Functions */
-
   // get mines
   getMines(data) {
     let mineArray = [];
@@ -336,8 +334,6 @@ export default class Board extends React.Component {
         >
           <div className="board">{this.renderBoard(this.state.boardData)}</div>
         </div>
-
-        {/* RESULTADO */}
 
         {this.state.gameStatus === "You Lost" ? (
           <div className="modal">
